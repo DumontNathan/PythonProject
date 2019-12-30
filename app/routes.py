@@ -26,8 +26,8 @@ def index () :
     return render_template('home.html', posts=posts)
 
 @app.route('/register', methods=['GET', 'POST'])
-def register():
-    form = RegistrationForm()
+def register():    # = controller
+    form = RegistrationForm()    
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')  #Hashing password
         user = User(username=form.username.data, email=form.email.data, password=hashed_password)  #User creation
